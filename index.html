@@ -8,6 +8,53 @@
 <body>
     <script>
         console.log("hello world!");
+
+        function getComputerChoice() {
+            let num = Math.floor(Math.random() * 3) + 1;
+            return parseInt(num);
+        }
+        
+        let randomNum = getComputerChoice();
+        let computerChoice = null;
+
+        if (randomNum == 1) computerChoice = 'rock';
+        else if (randomNum == 2) computerChoice = 'paper';
+        else if (randomNum == 3) computerChoice = 'scissors';
+
+        let userChoice;
+        
+        function getUserChoice(){
+            userChoice = prompt("Choose Rock, Paper, or Scissors");
+            userChoice = userChoice.trim().toLowerCase();
+            console.log(userChoice);
+            if (userChoice == 'rock' || userChoice == 'paper' || userChoice == 'scissors') {
+                return userChoice;
+            } else {
+                console.log("Incorrect input. Please choose Rock, Paper, or Scissors.");
+                getUserChoice();
+            }
+        }
+
+        userChoice = getUserChoice();
+
+        console.log(`You chose , ${userChoice}.`);
+        
+        if (userChoice == 'rock' && computerChoice == 'scissors') {
+            console.log(`You won! The computer chose ${computerChoice}, ${userChoice} beats ${computerChoice}!`);
+        } else if (userChoice == 'rock' && computerChoice == 'paper') {
+            console.log(`You lost! The computer chose ${computerChoice}, ${computerChoice} beats ${userChoice}!`);
+        } else if (userChoice == 'paper' && computerChoice == 'rock') {
+            console.log(`You won! The computer chose ${computerChoice}, ${userChoice} beats ${computerChoice}!`);
+        } else if (userChoice == 'paper' && computerChoice == 'scissors') {
+            console.log(`You lost! The computer chose ${computerChoice}, ${computerChoice} beats ${userChoice}!`);
+        } else if (userChoice == 'scissors' && computerChoice == 'rock') {
+            console.log(`You lost! The computer chose ${computerChoice}, ${computerChoice} beats ${userChoice}!`);
+        } else if (userChoice == 'scissors' && computerChoice == 'paper') {
+            console.log(`You won! The computer chose ${computerChoice}, ${userChoice} beats ${computerChoice}!`);
+        } else if (userChoice == computerChoice) {
+            console.log("Tie game!");
+        }
+        
     </script>
 </body>
 </html>
